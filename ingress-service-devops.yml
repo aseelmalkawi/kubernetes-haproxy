@@ -1,0 +1,36 @@
+# 8- Create a service for frontend which should be named as ingress-service-devops under
+# same namespace, labels run should be haproxy-ingress. Configure spec as selectors' run
+# should be haproxy-ingress, type should be NodePort. The first port name should be http,
+# its port should be 80, protocol should be TCP, targetPort should be 80 and nodePort should
+# be 32456. The second port name should be https, its port should be 443, protocol should
+# be TCP, targetPort should be 443 and nodePort should be 32567. The third port name
+# should be stat, its port should be 1024, protocol should be TCP, targetPort should be 1024
+# and nodePort should be 32678
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-service-devops
+  namespace: haproxy-controller-devops
+  labels:
+    run: haproxy-ingress
+spec:
+  selector:
+    run: haproxy-ingress
+  type: NodePort
+  ports: 
+    - name: http
+      targetPort: 80
+      port: 80
+      nodePort: 32456
+      protocol: TCP
+    - name: https
+      targetPort: 443
+      port: 443
+      nodePort: 32567
+      protocol: TCP
+    - name: stat
+      targetPort: 1024
+      port: 1024
+      nodePort: 30950
+      protocol: TCP

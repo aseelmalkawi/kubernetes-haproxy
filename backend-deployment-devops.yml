@@ -1,0 +1,29 @@
+#5- Create a backend deployment which should be named as backend-deployment-devops
+#under the same namespace, labels run should be ingress-default-backend under metadata.
+#Configure spec as replica should be 1, selector's matchLabels run should be
+#ingress-default-backend. Template's labels run under metadata should be
+#ingress-default-backend. The container should named as backend-container-devops, use
+#image gcr.io/google_containers/defaultbackend:1.0 ( use exact name of image as
+#mentioned ) and its containerPort should be 8080
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment-devops
+  namespace: haproxy-controller-devops
+  labels:
+    run: ingress-default-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: ingress-default-backend
+  template:
+    metadata:
+      labels:
+        run: ingress-default-backend
+    spec:
+      containers:
+      - name: backend-container-devops
+        image: gcr.io/google_containers/defaultbackend:1.0
+        ports: 
+        - containerPort: 8080

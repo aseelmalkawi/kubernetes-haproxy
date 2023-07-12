@@ -1,0 +1,5 @@
+#1- Create a namespace haproxy-controller-devops.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: haproxy-controller-devops

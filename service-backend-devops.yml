@@ -1,0 +1,19 @@
+# 6- Create a service for backend which should be named as service-backend-devops under
+# the same namespace, labels run should be ingress-default-backend. Configure spec as
+# selector's run should be ingress-default-backend, port should be named as port-backend,
+# protocol should be TCP, port should be 8080 and targetPort should be 8080.
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-backend-devops
+  namespace: haproxy-controller-devops
+  labels:
+    run: ingress-default-backend
+spec:
+  selector:
+    run: ingress-default-backend
+  ports: 
+    - name: port-backend
+      targetPort: 8080
+      port: 8080
+      protocol: TCP

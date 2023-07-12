@@ -1,0 +1,14 @@
+# 3- Create a ClusterRole which should be named as haproxy-cluster-role-devops, to grant
+# permissions "get", "list", "watch", "create", "patch", "update" to
+# "Configmaps",”secrets”,"endpoints","nodes","pods","services",
+# "namespaces","events","serviceaccounts".
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: haproxy-cluster-role-devops
+
+rules:
+- apiGroups: [""]
+  resources: ["Configmaps","secrets","endpoints","nodes","pods","services", "namespaces","events","serviceaccounts"] 
+  verbs: ["get", "list", "watch", "create", "patch", "update"]
